@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/Users/noahpovis/.local/share/virtualenvs/TwitOff2020-j8A7qMoH/bin/python"
+    , "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint-flask"
+    ]
+}
