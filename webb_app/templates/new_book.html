@@ -7,14 +7,16 @@
 </head>
 <body>
     
-    <h1>New Book Page</h1>
 
-    <p>Please fill out the form and submit to create a new book!</p>
+    <h1>New Books Page</h1>
+
+    <p>Please fill out the form below to add a new book ot the database:</p>
+
 
     <form action="/books/create" method="POST">
 
         <label>Title:</label>
-        <input type="text" name="title" placeholder="Book XYZ" value="Book XYZ">
+        <input type="text" name="book.title" placeholder="Book XYZ" value="Book XYZ">
 
         <label>Author:</label>
         <select name="author_name">
@@ -25,6 +27,7 @@
 
         <button>Submit</button>
     </form>
-    
+
+
 </body>
 </html>

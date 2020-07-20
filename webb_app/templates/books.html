@@ -6,11 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <h2>Welcome to the Books Page</h2>
+
+
+    <h1>Books Page</h1>
+    <h2>Subheading</h2>
+
 
     <p>{{ message }}</p>
-
+    
     {% if books %}
         <ul>
         {% for book in books %}
@@ -21,5 +24,10 @@
     {% else %}
         <p>Books not found.</p>
     {% endif %}
+
+
+
+
+
 </body>
 </html>
