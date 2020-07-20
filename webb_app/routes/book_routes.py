@@ -27,7 +27,7 @@ def list_books_for_humans():
     # ]
 
     # SELECT * FROM books
-    book_records = Book.query.all()
+    book_records = book.query.all()
     print(book_records)
 
     return render_template("books.html", message="Here's some books", books=book_records)
@@ -60,4 +60,3 @@ def create_book():
     # Redirects you back to "books" page after creating new book
     return redirect("/books")
 
-    
