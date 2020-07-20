@@ -27,7 +27,7 @@ def list_books_for_humans():
     # ]
 
     # SELECT * FROM books
-    book_records = book.query.all()
+    book_records = Book.query.all()
     print(book_records)
 
     return render_template("books.html", message="Here's some books", books=book_records)
@@ -49,14 +49,14 @@ def create_book():
     db.session.add(new_book)
     # Committing the change to the DataBase
     db.session.commit()
-    
 
-    # return jsonify({
-    #     "message": "BOOK CREATED OK (TODO)",
-    #     "book": dict(request.form)
-    # })
+    return jsonify({
+        "message": "BOOK CREATED OK!",
+        "book": dict(request.form)
+    })
+    
     #flash(f"Book '{new_book.title}' created successfully!", "success")
     
     # Redirects you back to "books" page after creating new book
-    return redirect("/books")
+    # return redirect("/books")
 
