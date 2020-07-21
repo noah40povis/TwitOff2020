@@ -50,13 +50,15 @@ def fetch_user(screen_name=None):
     #counter = 0
     ## For Loop:
     # Looping through statuses and 
-    for status in statuses:
+    for index, status in enumerate(statuses):
         # Printing the full-text of the tweets from the user_timeeline; 
         # specified above
+        print(index)
         print(status.full_text)
         print("----")
+        embedding = embeddings[index]
         
-        embedding = basilica_api.embed_sentence(status.full_text, model="twitter")
+        #embedding = basilica_api.embed_sentence(status.full_text, model="twitter")
         # Get existing tweet from the DataBase or initialize a new one:
         db_tweet = Tweet.query.get(status.id) or Tweet(id=status.id)
         db_tweet.user_id = status.user.id #> or db_user.id
