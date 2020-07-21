@@ -5,6 +5,7 @@ from webb_app.models import db, migrate
 from webb_app.routes.home_routes import home_routes
 from webb_app.routes.book_routes import book_routes
 from webb_app.routes.twitter_routes import twitter_routes 
+from webb_app.routes.stats_routes import stats_routes
 
 SQLALCHEMY_DATABASE_URI = "sqlite:////Users/noahpovis/Documents/GitHub/TwitOff2020/webb_app.db" # using relative filepath
 #DATABASE_URL = "sqlite://///Users/noahpovis/Documents/GitHub/TwitOff2020/webb_app.db" # using absolute filepath on Mac (recommended)
@@ -22,6 +23,7 @@ def create_app():
     app.register_blueprint(home_routes)
     app.register_blueprint(book_routes)
     app.register_blueprint(twitter_routes)
+    app.register_blueprint(stats_routes)
     return app 
 
 if __name__ == "__main__":

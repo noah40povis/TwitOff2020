@@ -28,8 +28,9 @@ class User(db.Model):
 class Tweet(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     user_id = db.Column(db.BigInteger, db.ForeignKey("user.id"))
-    full_text = db.Column(db.String(500))
-    embedding = db.Column(db.PickleType)
+    full_text = db.Column(db.String(500)) #allows for full tweet + link 
+    embedding = db.Column(db.PickleType)  
+    #user = db.relationship("User", backreg=DB.backref('tweets', lazy=True)) ##establishes the relationship between two tables
 
     user = db.relationship("User", backref=db.backref("tweets", lazy=True))
 

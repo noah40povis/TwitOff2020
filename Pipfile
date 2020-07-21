@@ -14,6 +14,7 @@ python-dotenv = "*"
 requests = "*"
 basilica = "*"
 tweepy = "*"
+sklearn = "*"
 
 [requires]
 python_version = "3.8"
