@@ -4,6 +4,7 @@ from flask import Flask
 from webb_app.models import db, migrate
 from webb_app.routes.home_routes import home_routes
 from webb_app.routes.book_routes import book_routes
+from webb_app.routes.twitter_routes import twitter_routes 
 
 SQLALCHEMY_DATABASE_URI = "sqlite:////Users/noahpovis/Documents/GitHub/TwitOff2020/webb_app.db" # using relative filepath
 #DATABASE_URL = "sqlite://///Users/noahpovis/Documents/GitHub/TwitOff2020/webb_app.db" # using absolute filepath on Mac (recommended)

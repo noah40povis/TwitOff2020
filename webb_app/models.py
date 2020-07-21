@@ -37,3 +37,31 @@ def parse_records(database_records):
         del parsed_record["_sa_instance_state"]
         parsed_records.append(parsed_record)
     return parsed_records
+
+
+####Add twitter data 
+
+class User(db.Model):
+    """Twitter users corresponding to Tweets in the Tweet table."""
+    id = db.Column(db.BigInteger, primary_key=True)
+    screen_name = db.Column(db.String(128), nullable=False)
+    name = db.Column(db.String)
+    location = db.Column(db.String)
+    # Tweet IDs are ordinal ints, so can be used to fetch only more recent
+    follower_count = db.Column(db.Integer)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.name)
+
+
+class Tweet(db.Model):
+    """Tweets and their embeddings from Basilica."""
+    id = db.Column(db.BigInteger, primary_key=True)
+    user_id = db.Column(db.BigInteger, db.ForeignKey('user.id'))
+    full_text = db.Column(db.String(500))  # Allowing for full + links
+    embedding = db.Column(db.PickleType)
+    
+    user = db.relationship('User', backref=db.backref('tweets', lazy=True))
+
+    def __repr__(self):
+        return '<Tweet {}>'.format(self.text)
