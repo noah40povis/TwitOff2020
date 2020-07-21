@@ -31,15 +31,16 @@ print("API CLIENT:", api)
 
 if __name__ == "__main__":
 
-    user = api.user_timeline("NewsfeedNoah", tweet_mode="extended", count=150, exclude_replies=False, include_rts=False)
+    user = api.get_user("NewsfeedNoah")
+    #user = api.user_timeline("NewsfeedNoah", tweet_mode="extended", count=150, exclude_replies=False, include_rts=False)
     print("TWITTER USER:", type(user))
-    #print(user.id)
+    print(user.id)
     print(user.screen_name)
     print(user.name)
 
     tweets = api.user_timeline("NewsfeedNoah", tweet_mode="extended")
     print("TWEETS", type(tweets))
-    print(type(tweet[0]))
+    print(type(tweets[0]))
 
     tweet = tweets[0]
     print(tweet.id)
