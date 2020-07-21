@@ -1,4 +1,6 @@
-# web_app/models.py
+# webb_app/models.py
+
+
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -25,14 +27,20 @@ class User(db.Model):
     followers_count = db.Column(db.Integer)
     #latest_tweet_id = db.Column(db.BigInteger)
 
+    
+    def __repr__(self):
+        return '<User {}>'.format(self.name)
+
+
 class Tweet(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     user_id = db.Column(db.BigInteger, db.ForeignKey("user.id"))
     full_text = db.Column(db.String(500)) #allows for full tweet + link 
     embedding = db.Column(db.PickleType)  
-    #user = db.relationship("User", backreg=DB.backref('tweets', lazy=True)) ##establishes the relationship between two tables
+    user = db.relationship("User", backref=db.backref("tweets", lazy=True)) ##establishes the relationship between two tables
 
-    user = db.relationship("User", backref=db.backref("tweets", lazy=True))
+    def __repr__(self):
+        return '<Tweet {}>'.format(self.text)
 
 def parse_records(database_records):
     """

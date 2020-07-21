@@ -1,10 +1,11 @@
-# web_app/routes/stats_routes.py
+# webb_app/routes/stats_routes.py
 
 from flask import Blueprint, request, jsonify, render_template
 
 from sklearn.linear_model import LogisticRegression # for example
 
 from webb_app.models import User, Tweet
+
 from webb_app.services.basilica_service import basilica_connection
 
 stats_routes = Blueprint("stats_routes", __name__)
@@ -19,12 +20,26 @@ def predict():
 
     print("-----------------")
     print("FETCHING TWEETS FROM THE DATABASE...")
+    
+    
+    # get the embeddings (from the db)
+    user_a = User.query.filter(User.screen_name == screen_name_a).first()
+    user_b = User.query.filter(User.screen_name == screen_name_b).first()
+    user_a_tweets = user_a.tweet  
+    user_b_tweets = user_b.tweet
+    print("FETCHED TWEETS", len(user_a_tweets, len(user_b_tweets)))
 
+    
+    
     print("-----------------")
     print("TRAINING THE MODEL...")
     
-    classifier = LogisticRegression()
-    # TODO: classifier.fit(___________, ___________)
+    # classifier = LogisticRegression()
+    # # X values / inputs: emebeddings 
+    # #Y values / labels: screenname 
+    # embeddings = []
+    # labels = []
+    # classifier.fit(embeddings, labels)
 
     print("-----------------")
     print("MAKING A PREDICTION...")
