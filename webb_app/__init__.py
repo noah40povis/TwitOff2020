@@ -21,6 +21,7 @@ def create_app():
 
     app.register_blueprint(home_routes)
     app.register_blueprint(book_routes)
+    app.register_blueprint(twitter_routes)
     return app 
 
 if __name__ == "__main__":
